@@ -1,7 +1,7 @@
 class Api::V1::MoviesController < ApiController
 
   def index
-  	movies = Imdb::Top250.new.movies.uniq.map do |object|
+  	movies = Imdb::Top250.new.movies.first(5).uniq.map do |object|
   	  movie = Imdb::Movie.new(object.id)
 
   	  {
